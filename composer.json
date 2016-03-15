@@ -1,12 +1,16 @@
 {
-    "name": "caffeinated/modules",
-    "description": "Laravel 5 Modules",
-    "keywords": ["modules", "laravel", "caffeinated"],
-    "license": "MIT",
+    "name": "sroutier/l51esk-modules",
+    "description": "Module package for Laravel 5.1 enterprise starter kit",
+    "keywords": ["modules", "laravel", "l51esk"],
+    "license": "GPL-3.0",
     "authors": [
         {
             "name": "Shea Lewis",
             "email": "shea.lewis89@gmail.com"
+        },
+        {
+            "name": "Sebastien Routier",
+            "email": "sroutier@gmail.com"
         }
     ],
     "require": {
@@ -19,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Caffeinated\\Modules\\": "src/"
+            "Sroutier\\L51ESK-Modules\\": "src/"
         }
     },
     "extra": {
