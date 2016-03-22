@@ -42,7 +42,8 @@ class MakeModuleCommand extends Command
 		'Providers/',
 		'Resources/',
 		'Resources/Lang/',
-		'Resources/Views/',
+        'Resources/Views/',
+        'Utils/',
 	];
 
 	/**
@@ -55,7 +56,8 @@ class MakeModuleCommand extends Command
 		'Http/routes.php',
 		'Providers/{{namespace}}ServiceProvider.php',
 		'Providers/RouteServiceProvider.php',
-		'module.json'
+        'Utils/{{namespace}}Maintenance.php',
+        'module.json'
 	];
 
 	/**
@@ -67,7 +69,8 @@ class MakeModuleCommand extends Command
 		'seeder.stub',
 		'routes.stub',
 		'moduleserviceprovider.stub',
-		'routeserviceprovider.stub',
+        'routeserviceprovider.stub',
+        'maintenance.stub',
 		'manifest.stub'
 	];
 

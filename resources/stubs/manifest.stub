@@ -5,5 +5,7 @@
 	"version": "{{version}}",
 	"author": "{{author}}",
 	"license": "{{license}}",
-	"description": "{{description}}"
+	"description": "{{description}}",
+	"enabled": false,
+	"initialized": false
 }

@@ -237,17 +237,37 @@ class Modules implements RepositoryInterface
 		return $this->repository->set($property, $value);
 	}
 
-	/**
-	 * Gets all enabled modules.
-	 *
-	 * @return array
-	 */
-	public function enabled()
-	{
-		return $this->repository->enabled();
-	}
+    /**
+     * Gets all initialized modules.
+     *
+     * @return array
+     */
+    public function initialized()
+    {
+        return $this->repository->initialized();
+    }
 
-	/**
+    /**
+     * Gets all uninitialized modules.
+     *
+     * @return array
+     */
+    public function uninitialized()
+    {
+        return $this->repository->uninitialized();
+    }
+
+    /**
+     * Gets all enabled modules.
+     *
+     * @return array
+     */
+    public function enabled()
+    {
+        return $this->repository->enabled();
+    }
+
+    /**
 	 * Gets all disabled modules.
 	 *
 	 * @return array
@@ -257,16 +277,38 @@ class Modules implements RepositoryInterface
 		return $this->repository->disabled();
 	}
 
-	/**
-	 * Check if specified module is enabled.
-	 *
-	 * @param  string $slug
-	 * @return bool
-	 */
-	public function isEnabled($slug)
-	{
-		return $this->repository->isEnabled($slug);
-	}
+    /**
+     * Check if specified module is initialized.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function isInitialized($slug)
+    {
+        return $this->repository->isInitialized($slug);
+    }
+
+    /**
+     * Check if specified module is Uninitialized.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function isUninitialized($slug)
+    {
+        return $this->repository->isUninitialized($slug);
+    }
+
+    /**
+     * Check if specified module is enabled.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function isEnabled($slug)
+    {
+        return $this->repository->isEnabled($slug);
+    }
 
 	/**
 	 * Check if specified module is disabled.
@@ -279,16 +321,50 @@ class Modules implements RepositoryInterface
 		return $this->repository->isDisabled($slug);
 	}
 
-	/**
-	 * Enables the specified module.
-	 *
-	 * @param  string $slug
-	 * @return bool
-	 */
-	public function enable($slug)
-	{
-		return $this->repository->enable($slug);
-	}
+    /**
+     * Initializes the specified module.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function initialize($slug)
+    {
+        // Resolve and invoke the modules own initialize method.
+        $maintenanceInstance = $this->getMaintenance($slug);
+        $maintenanceInstance::initialize();
+
+        return $this->repository->initialize($slug);
+    }
+
+    /**
+     * Uninitialize the specified module.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function uninitialize($slug)
+    {
+        // Resolve and invoke the modules own initialize method.
+        $maintenanceInstance = $this->getMaintenance($slug);
+        $maintenanceInstance::uninitialize();
+
+        return $this->repository->uninitialize($slug);
+    }
+
+    /**
+     * Enables the specified module.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function enable($slug)
+    {
+        // Resolve and invoke the modules own initialize method.
+        $maintenanceInstance = $this->getMaintenance($slug);
+        $maintenanceInstance::enable();
+
+        return $this->repository->enable($slug);
+    }
 
 	/**
 	 * Disables the specified module.
@@ -298,6 +374,10 @@ class Modules implements RepositoryInterface
 	 */
 	public function disable($slug)
 	{
+        // Resolve and invoke the modules own initialize method.
+        $maintenanceInstance = $this->getMaintenance($slug);
+        $maintenanceInstance::disable();
+
 		return $this->repository->disable($slug);
 	}
 
@@ -313,4 +393,24 @@ class Modules implements RepositoryInterface
 			: studly_case($properties['slug'])
 		);
 	}
+
+    /**
+     * Resolve and instantiate the module's maintenance class.
+     *
+     * @param $slug
+     * @return object
+     */
+    public function getMaintenance($slug)
+    {
+        $maintenanceInstance = null;
+
+        $nameSpace = \Module::where('slug', $slug)->first()['namespace'];
+        $maintenanceFile  =        config('modules.path')      . '/' . $nameSpace . '/Utils/'   . $nameSpace . 'Maintenance.php';
+        $maintenanceClass = '\\' . config('modules.namespace') .       $nameSpace . '\\Utils\\' . $nameSpace . 'Maintenance';
+
+        require($maintenanceFile);
+        $maintenanceInstance = new $maintenanceClass();
+
+        return $maintenanceInstance;
+    }
 }

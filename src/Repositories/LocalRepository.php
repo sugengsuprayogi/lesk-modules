@@ -25,11 +25,15 @@ class LocalRepository extends Repository
 		});
 
 		$modules->each(function($module) {
-			if (! $module->has('enabled')) {
-				$module->put('enabled', true);
-			}
+            if (! $module->has('enabled')) {
+                $module->put('enabled', false); // SR [2016-03-16] Defaults to false, not true
+            }
 
-			if (! $module->has('order')) {
+            if (! $module->has('initialized')) {
+                $module->put('initialized', false); // SR [2016-03-16] Defaults to false, not true
+            }
+
+            if (! $module->has('order')) {
 				$module->put('order', 9001);
 			}
 
@@ -173,17 +177,37 @@ class LocalRepository extends Repository
         return $this->files->put($cachePath, $content);
 	}
 
-	/**
-	 * Get all enabled modules.
-	 *
-	 * @return Collection
-	 */
-	public function enabled()
-	{
-		return $this->all()->where('enabled', true);
-	}
+    /**
+     * Get all initialized modules.
+     *
+     * @return Collection
+     */
+    public function initialized()
+    {
+        return $this->all()->where('initialized', true);
+    }
 
-	/**
+    /**
+     * Get all uninitialized modules.
+     *
+     * @return Collection
+     */
+    public function uninitialized()
+    {
+        return $this->all()->where('initialized', false);
+    }
+
+    /**
+     * Get all enabled modules.
+     *
+     * @return Collection
+     */
+    public function enabled()
+    {
+        return $this->all()->where('enabled', true);
+    }
+
+    /**
 	 * Get all disabled modules.
 	 *
 	 * @return Collection
@@ -193,21 +217,49 @@ class LocalRepository extends Repository
         return $this->all()->where('enabled', false);
 	}
 
-	/**
-	 * Check if specified module is enabled.
-	 *
-	 * @param  string $slug
-	 * @return bool
-	 */
-	public function isEnabled($slug)
-	{
-		$module = $this->where('slug', $slug)
-			->first();
+    /**
+     * Check if specified module is initialized.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function isInitialized($slug)
+    {
+        $module = $this->where('slug', $slug)
+            ->first();
 
-		return ($module['enabled'] === true);
-	}
+        return ($module['initialized'] === true);
+    }
 
-	/**
+    /**
+     * Check if specified module is uninitialized.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function isUninitialized($slug)
+    {
+        $module = $this->where('slug', $slug)
+            ->first();
+
+        return ($module['initialized'] === false);
+    }
+
+    /**
+     * Check if specified module is enabled.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function isEnabled($slug)
+    {
+        $module = $this->where('slug', $slug)
+            ->first();
+
+        return ($module['enabled'] === true);
+    }
+
+    /**
 	 * Check if specified module is disabled.
 	 *
 	 * @param  string $slug
@@ -221,18 +273,40 @@ class LocalRepository extends Repository
 		return ($module['enabled'] === false);
 	}
 
-	/**
-	 * Enables the specified module.
-	 *
-	 * @param  string $slug
-	 * @return bool
-	 */
-	public function enable($slug)
-	{
-        return $this->set($slug.'::enabled', true);
-	}
+    /**
+     * Initialize the specified module.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function initialize($slug)
+    {
+        return $this->set($slug.'::initialized', true);
+    }
 
-	/**
+    /**
+     * Uninitialize the specified module.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function uninitialize($slug)
+    {
+        return $this->set($slug.'::initialized', false);
+    }
+
+    /**
+     * Enables the specified module.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function enable($slug)
+    {
+        return $this->set($slug.'::enabled', true);
+    }
+
+    /**
 	 * Disables the specified module.
 	 *
 	 * @param  string $slug

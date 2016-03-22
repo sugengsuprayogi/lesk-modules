@@ -1,0 +1,52 @@
+<?php namespace {{path}}\{{namespace}}\Utils;
+
+use Caffeinated\Modules\Contracts\ModuleMaintenanceInterface;
+use Module;
+
+class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
+
+    static public function initialize()
+    {
+
+        DB::transaction(function () {
+
+            // TODO: Add initialization code.
+
+        }); // End of DB::transaction(....)
+
+    }
+
+    static public function unInitialize()
+    {
+
+        DB::transaction(function () {
+
+            // TODO: Add uninitialization code.
+
+        }); // End of DB::transaction(....)
+
+    }
+
+    static public function enable()
+    {
+
+        DB::transaction(function () {
+
+            // TODO: Add enable code.
+
+        }); // End of DB::transaction(....)
+
+    }
+
+    static public function disable()
+    {
+
+        DB::transaction(function () {
+
+            // TODO: Add disable code.
+
+        }); // End of DB::transaction(....)
+
+    }
+
+}
