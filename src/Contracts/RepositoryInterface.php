@@ -91,6 +91,20 @@ interface RepositoryInterface
 	 */
 	public function set($property, $value);
 
+    /**
+     * Get all initialized modules.
+     *
+     * @return Collection
+     */
+    public function initialized();
+
+    /**
+     * Get all uninitialized modules.
+     *
+     * @return Collection
+     */
+    public function uninitialized();
+
 	/**
 	 * Get all enabled modules.
 	 *
@@ -104,6 +118,22 @@ interface RepositoryInterface
 	 * @return Collection
 	 */
 	public function disabled();
+
+    /**
+     * Check if specified module is initialized.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function isInitialized($slug);
+
+    /**
+     * Check if specified module is uninitialized.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function isUninitialized($slug);
 
 	/**
 	 * Determines if the specified module is enabled.
@@ -120,6 +150,22 @@ interface RepositoryInterface
 	* @return bool
 	*/
 	public function isDisabled($slug);
+
+    /**
+     * Initialize the specified module.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function initialize($slug);
+
+    /**
+     * Uninitialize the specified module.
+     *
+     * @param  string $slug
+     * @return bool
+     */
+    public function uninitialize($slug);
 
 	/**
 	 * Enables the specified module.
