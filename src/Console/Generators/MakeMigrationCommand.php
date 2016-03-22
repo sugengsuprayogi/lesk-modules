@@ -1,7 +1,7 @@
 <?php
-namespace Caffeinated\Modules\Console\Generators;
+namespace Sroutier\L51ESKModules\Console\Generators;
 
-use Caffeinated\Modules\Modules;
+use Sroutier\L51ESKModules\Modules;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;

@@ -1,5 +1,5 @@
 <?php
-namespace Caffeinated\Modules\Providers;
+namespace Sroutier\L51ESKModules\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -27,9 +27,9 @@ class RepositoryServiceProvider extends ServiceProvider
 		if ($driver == 'Custom') {
 			$namespace = config('modules.custom_driver');
 		} else {
-			$namespace = 'Caffeinated\Modules\Repositories\\'.$driver.'Repository';
+			$namespace = 'Sroutier\L51ESKModules\Repositories\\'.$driver.'Repository';
 		}
 
-		$this->app->bind('Caffeinated\Modules\Contracts\RepositoryInterface', $namespace);
+		$this->app->bind('Sroutier\L51ESKModules\Contracts\RepositoryInterface', $namespace);
 	}
 }

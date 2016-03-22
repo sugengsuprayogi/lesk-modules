@@ -1,7 +1,7 @@
 <?php
-namespace Caffeinated\Modules\Repositories;
+namespace Sroutier\L51ESKModules\Repositories;
 
-use Caffeinated\Modules\Contracts\RepositoryInterface;
+use Sroutier\L51ESKModules\Contracts\RepositoryInterface;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 

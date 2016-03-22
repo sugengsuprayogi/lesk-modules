@@ -1,7 +1,7 @@
 <?php
-namespace Caffeinated\Modules\Console\Commands;
+namespace Sroutier\L51ESKModules\Console\Commands;
 
-use Caffeinated\Modules\Modules;
+use Sroutier\L51ESKModules\Modules;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;

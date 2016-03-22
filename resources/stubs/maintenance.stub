@@ -1,6 +1,6 @@
 <?php namespace {{path}}\{{namespace}}\Utils;
 
-use Caffeinated\Modules\Contracts\ModuleMaintenanceInterface;
+use Sroutier\L51ESKModules\Contracts\ModuleMaintenanceInterface;
 use Module;
 
 class {{namespace}}Maintenance implements ModuleMaintenanceInterface {

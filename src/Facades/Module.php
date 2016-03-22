@@ -1,5 +1,5 @@
 <?php
-namespace Caffeinated\Modules\Facades;
+namespace Sroutier\L51ESKModules\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

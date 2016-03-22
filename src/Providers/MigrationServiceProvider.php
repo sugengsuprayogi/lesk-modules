@@ -1,5 +1,5 @@
 <?php
-namespace Caffeinated\Modules\Providers;
+namespace Sroutier\L51ESKModules\Providers;
 
 use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;

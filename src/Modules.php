@@ -1,7 +1,7 @@
 <?php
-namespace Caffeinated\Modules;
+namespace Sroutier\L51ESKModules;
 
-use Caffeinated\Modules\Contracts\RepositoryInterface;
+use Sroutier\L51ESKModules\Contracts\RepositoryInterface;
 use Illuminate\Foundation\Application;
 
 class Modules implements RepositoryInterface
@@ -49,7 +49,7 @@ class Modules implements RepositoryInterface
 	 *
 	 * @param  string $properties
 	 * @return string
-	 * @throws \Caffeinated\Modules\Exception\FileMissingException
+	 * @throws \Sroutier\L51ESKModules\Exception\FileMissingException
 	 */
 	protected function registerServiceProvider($properties)
 	{
