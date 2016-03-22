@@ -1,19 +1,8 @@
 L51ESK Modules
 ===================
-[![Laravel 5.1](https://img.shields.io/badge/Laravel-5.1-orange.svg?style=flat-square)](http://laravel.com)
-[![Laravel 5.2](https://img.shields.io/badge/Laravel-5.2-orange.svg?style=flat-square)](http://laravel.com)
 [![License](https://img.shields.io/badge/licence-GPLv3-brightgreen.svg)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 
-IN DEVELOPMENT PLEASE DO NOT USE YET
-
-IN DEVELOPMENT PLEASE DO NOT USE YET
-
-IN DEVELOPMENT PLEASE DO NOT USE YET
-
-IN DEVELOPMENT PLEASE DO NOT USE YET
-
-IN DEVELOPMENT PLEASE DO NOT USE YET
-
+This is a fork of the excellent [Caffeinated Modules](https://github.com/caffeinated/modules) with some cutomization to work specifically in the [Laravel Enterprise Web application Starter Kit or L51ESK](https://github.com/sroutier/laravel-5.1-enterprise-starter-kit)
 
 Caffeinated Modules is a simple package to allow the means to separate your Laravel 5 application out into modules. Each module is completely self-contained allowing the ability to simply drop a module in for use.
 
