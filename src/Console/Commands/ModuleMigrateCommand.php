@@ -1,8 +1,8 @@
 <?php
-namespace Caffeinated\Modules\Console\Commands;
+namespace Sroutier\L51ESKModules\Console\Commands;
 
 use App;
-use Caffeinated\Modules\Modules;
+use Sroutier\L51ESKModules\Modules;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;

@@ -1,5 +1,5 @@
 <?php
-namespace Caffeinated\Modules;
+namespace Sroutier\L51ESKModules;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -37,18 +37,18 @@ class ModulesServiceProvider extends ServiceProvider
 			__DIR__.'/../config/modules.php', 'modules'
 		);
 
-		$this->app->register('Caffeinated\Modules\Providers\RepositoryServiceProvider');
+		$this->app->register('Sroutier\L51ESKModules\Providers\RepositoryServiceProvider');
 
-		$this->app->register('Caffeinated\Modules\Providers\MigrationServiceProvider');
+		$this->app->register('Sroutier\L51ESKModules\Providers\MigrationServiceProvider');
 
-		$this->app->register('Caffeinated\Modules\Providers\ConsoleServiceProvider');
+		$this->app->register('Sroutier\L51ESKModules\Providers\ConsoleServiceProvider');
 
-		$this->app->register('Caffeinated\Modules\Providers\GeneratorServiceProvider');
+		$this->app->register('Sroutier\L51ESKModules\Providers\GeneratorServiceProvider');
 
 		$this->app->singleton('modules', function ($app) {
-			$repository = $app->make('Caffeinated\Modules\Contracts\RepositoryInterface');
+			$repository = $app->make('Sroutier\L51ESKModules\Contracts\RepositoryInterface');
 
-			return new \Caffeinated\Modules\Modules($app, $repository);
+			return new \Sroutier\L51ESKModules\Modules($app, $repository);
 		});
 	}
 

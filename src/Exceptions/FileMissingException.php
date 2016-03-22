@@ -1,4 +1,4 @@
 <?php
-namespace Caffeinated\Modules\Exceptions;
+namespace Sroutier\L51ESKModules\Exceptions;
 
 class FileMissingException extends \Exception {}

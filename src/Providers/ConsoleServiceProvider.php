@@ -1,5 +1,5 @@
 <?php
-namespace Caffeinated\Modules\Providers;
+namespace Sroutier\L51ESKModules\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -41,7 +41,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerDisableCommand()
 	{
 		$this->app->singleton('command.module.disable', function() {
-			return new \Caffeinated\Modules\Console\Commands\ModuleDisableCommand;
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleDisableCommand;
 		});
 
 		$this->commands('command.module.disable');
@@ -55,7 +55,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerEnableCommand()
 	{
 		$this->app->singleton('command.module.enable', function() {
-			return new \Caffeinated\Modules\Console\Commands\ModuleEnableCommand;
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleEnableCommand;
 		});
 
 		$this->commands('command.module.enable');
@@ -69,7 +69,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerListCommand()
 	{
 		$this->app->singleton('command.module.list', function($app) {
-			return new \Caffeinated\Modules\Console\Commands\ModuleListCommand($app['modules']);
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleListCommand($app['modules']);
 		});
 
 		$this->commands('command.module.list');
@@ -83,7 +83,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerMigrateCommand()
 	{
 		$this->app->singleton('command.module.migrate', function($app) {
-			return new \Caffeinated\Modules\Console\Commands\ModuleMigrateCommand($app['migrator'], $app['modules']);
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleMigrateCommand($app['migrator'], $app['modules']);
 		});
 
 		$this->commands('command.module.migrate');
@@ -97,7 +97,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerMigrateRefreshCommand()
 	{
 		$this->app->singleton('command.module.migrate.refresh', function() {
-			return new \Caffeinated\Modules\Console\Commands\ModuleMigrateRefreshCommand;
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleMigrateRefreshCommand;
 		});
 
 		$this->commands('command.module.migrate.refresh');
@@ -111,7 +111,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerMigrateResetCommand()
 	{
 		$this->app->singleton('command.module.migrate.reset', function($app) {
-			return new \Caffeinated\Modules\Console\Commands\ModuleMigrateResetCommand($app['modules'], $app['files'], $app['migrator']);
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleMigrateResetCommand($app['modules'], $app['files'], $app['migrator']);
 		});
 
 		$this->commands('command.module.migrate.reset');
@@ -125,7 +125,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerMigrateRollbackCommand()
 	{
 		$this->app->singleton('command.module.migrate.rollback', function($app) {
-			return new \Caffeinated\Modules\Console\Commands\ModuleMigrateRollbackCommand($app['modules']);
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleMigrateRollbackCommand($app['modules']);
 		});
 
 		$this->commands('command.module.migrate.rollback');
@@ -139,7 +139,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerOptimizeCommand()
 	{
 		$this->app->singleton('command.module.optimize', function() {
-			return new \Caffeinated\Modules\Console\Commands\ModuleOptimizeCommand;
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleOptimizeCommand;
 		});
 
 		$this->commands('command.module.optimize');
@@ -153,7 +153,7 @@ class ConsoleServiceProvider extends ServiceProvider
 	protected function registerSeedCommand()
 	{
 		$this->app->singleton('command.module.seed', function($app) {
-			return new \Caffeinated\Modules\Console\Commands\ModuleSeedCommand($app['modules']);
+			return new \Sroutier\L51ESKModules\Console\Commands\ModuleSeedCommand($app['modules']);
 		});
 
 		$this->commands('command.module.seed');

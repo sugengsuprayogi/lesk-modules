@@ -1,5 +1,5 @@
 <?php
-namespace Caffeinated\Modules\Traits;
+namespace Sroutier\L51ESKModules\Traits;
 
 trait MigrationTrait
 {

@@ -36,13 +36,13 @@ Once this operation is complete, simply add both the service provider and facade
 #### Service Provider
 
 ```php
-Caffeinated\Modules\ModulesServiceProvider::class,
+Sroutier\L51ESKModules\ModulesServiceProvider::class,
 ```
 
 #### Facade
 
 ```php
-'Module' => Caffeinated\Modules\Facades\Module::class,
+'Module' => Sroutier\L51ESKModules\Facades\Module::class,
 ```
 
 And that's it! With your coffee in reach, start building out some awesome modules!

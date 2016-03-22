@@ -1,5 +1,5 @@
 <?php
-namespace Caffeinated\Modules\Contracts;
+namespace Sroutier\L51ESKModules\Contracts;
 
 interface RepositoryInterface
 {

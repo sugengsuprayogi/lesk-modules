@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Sroutier\\L51ESK-Modules\\": "src/"
+          "Sroutier\\L51ESKModules\\": "src/",
         }
     },
     "extra": {

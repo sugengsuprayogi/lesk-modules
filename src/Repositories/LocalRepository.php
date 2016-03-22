@@ -1,7 +1,7 @@
 <?php
-namespace Caffeinated\Modules\Repositories;
+namespace Sroutier\L51ESKModules\Repositories;
 
-use Caffeinated\Modules\Repositories\Repository;
+use Sroutier\L51ESKModules\Repositories\Repository;
 
 class LocalRepository extends Repository
 {

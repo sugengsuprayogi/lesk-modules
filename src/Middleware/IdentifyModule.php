@@ -1,21 +1,21 @@
 <?php
 
-namespace Caffeinated\Modules\Middleware;
+namespace Sroutier\L51ESKModules\Middleware;
 
-use Caffeinated\Modules\Modules;
+use Sroutier\L51ESKModules\Modules;
 use Closure;
 
 class IdentifyModule
 {
     /**
-     * @var Caffeinated\Modules
+     * @var Sroutier\L51ESKModules
      */
     protected $module;
 
     /**
      * Create a new IdentifyModule instance.
      *
-     * @param Caffeinated\Modules $module
+     * @param Sroutier\L51ESKModules $module
      */
     public function __construct(Modules $module)
     {
