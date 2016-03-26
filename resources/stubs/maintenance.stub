@@ -2,6 +2,7 @@
 
 use Sroutier\L51ESKModules\Contracts\ModuleMaintenanceInterface;
 use Module;
+use DB;
 
 class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
 
