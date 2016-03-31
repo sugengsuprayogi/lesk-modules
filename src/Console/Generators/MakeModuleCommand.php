@@ -41,9 +41,11 @@ class MakeModuleCommand extends Command
 		'Http/Requests/',
 		'Providers/',
 		'Resources/',
-		'Resources/Lang/',
+        'Resources/Lang/',
+        'Resources/Lang/en',
         'Resources/Views/',
         'Utils/',
+        'config/',
 	];
 
 	/**
@@ -53,10 +55,15 @@ class MakeModuleCommand extends Command
 	 */
 	protected $moduleFiles = [
 		'Database/Seeds/{{namespace}}DatabaseSeeder.php',
-		'Http/routes.php',
+        'Http/routes.php',
+        'Http/Controllers/{{namespace}}Controller.php',
 		'Providers/{{namespace}}ServiceProvider.php',
 		'Providers/RouteServiceProvider.php',
+        'Resources/Lang/en/general.php',
+        'Resources/Views/method_name.blade.php',
         'Utils/{{namespace}}Maintenance.php',
+        'config/config.php',
+        'README.md',
         'module.json'
 	];
 
@@ -68,9 +75,14 @@ class MakeModuleCommand extends Command
 	protected $moduleStubs = [
 		'seeder.stub',
 		'routes.stub',
+        'controller.stub',
 		'moduleserviceprovider.stub',
         'routeserviceprovider.stub',
+        'general_en_lang.stub',
+        'method_name.blade.stub',
         'maintenance.stub',
+        'config.stub',
+        'README.stub',
 		'manifest.stub'
 	];
 
@@ -121,7 +133,7 @@ class MakeModuleCommand extends Command
         $this->container['namespace']   = Str::studly($this->container['slug']);
         $this->container['version']     = '1.0';
         $this->container['description'] = 'This is the description for the '.$this->container['name'].' module.';
-        $this->container['license']     = 'MIT';
+        $this->container['license']     = 'GPL-3.0';
         $this->container['author']      = ' ';
 
         if ($this->option('quick')) {
