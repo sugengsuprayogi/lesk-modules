@@ -1,0 +1,18 @@
+<?php
+
+return [
+
+    'audit-log'           => [
+        'category'              => '{{namespace}}',
+        'msg-method-name'       => 'Accessed method-name {{namespace}}: :var.',
+    ],
+
+    'page'              => [
+        'method-name'              => [
+            'title'                     => '{{namespace}} | Method Name',
+            'description'               => 'List {{namespace}} information.',
+            'box-title'                 => 'Title of the box.',
+            ],
+        ],
+
+];

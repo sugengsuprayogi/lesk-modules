@@ -36,4 +36,22 @@ class {{namespace}}ServiceProvider extends ServiceProvider
 		View::addNamespace('{{slug}}', base_path('resources/views/vendor/{{slug}}'));
 		View::addNamespace('{{slug}}', realpath(__DIR__.'/../Resources/Views'));
 	}
+
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../config/config.php' => config_path('{{slug}}.php'),
+        ], 'config');
+
+        // use the vendor configuration file as fallback
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/config.php', '{{slug}}'
+        );
+    }
+
 }
