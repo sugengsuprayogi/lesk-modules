@@ -98,7 +98,7 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
             // Locate demo module parent folder and delete it if if does not contain
             // any other sub-menu entries.
             $menu{{namespace}}Container = Menu::where('name', '{{slug}}-container')->first();
-            if (!$menu{{namespace}}Container->children->count()) {
+            if ( ($menu{{namespace}}Container) && (!$menu{{namespace}}Container->children->count()) ) {
                 Menu::destroy($menu{{namespace}}Container->id);
             }
 
@@ -134,8 +134,10 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
 
             // Locate module sub menu entries and enable them.
             $menu{{namespace}}MethodName = Menu::where('name', '{{slug}}-method-name')->first();
-            $menu{{namespace}}MethodName->enabled = true;
-            $menu{{namespace}}MethodName->save();
+            if ($menu{{namespace}}MethodName) {
+                $menu{{namespace}}MethodName->enabled = true;
+                $menu{{namespace}}MethodName->save();
+            }
 
         }); // End of DB::transaction(....)
 
@@ -148,8 +150,10 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
 
             // Locate module sub menu entries and disable them.
             $menu{{namespace}}MethodName = Menu::where('name', '{{slug}}-method-name')->first();
-            $menu{{namespace}}MethodName->enabled = false;
-            $menu{{namespace}}MethodName->save();
+            if ($menu{{namespace}}MethodName) {
+                $menu{{namespace}}MethodName->enabled = false;
+                $menu{{namespace}}MethodName->save();
+            }
 
         }); // End of DB::transaction(....)
 
