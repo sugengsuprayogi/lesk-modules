@@ -26,11 +26,11 @@ class LocalRepository extends Repository
 
 		$modules->each(function($module) {
             if (! $module->has('enabled')) {
-                $module->put('enabled', false); // SR [2016-03-16] Defaults to false, not true
+                $module->put('enabled', config('modules.enabled', false)); // SR [2016-05-04] Merge upstream but defaults to false, not true
             }
 
             if (! $module->has('initialized')) {
-                $module->put('initialized', false); // SR [2016-03-16] Defaults to false, not true
+                $module->put('initialized', config('modules.enabled', false)); // SR [2016-03-16] Defaults to false, not true
             }
 
             if (! $module->has('order')) {

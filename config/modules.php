@@ -15,16 +15,42 @@ return [
 
 	'path' => app_path('Modules'),
 
-	/*
+    /*
 	|--------------------------------------------------------------------------
-	| Modules Base Namespace
+	| Modules Default State: Enabled
 	|--------------------------------------------------------------------------
 	|
-	| Define the base namespace for your modules. Be sure to update this value
-	| if you move your modules directory to a new path. This is primarily used
-	| by the module:make Artisan command.
+	| When a previously unknown module is added, if it doesn't have a 'enabled' state
+    | set then this is the value which it will default to. If this is not provided
+    | then the module will default to being 'disabled'.
 	|
 	*/
+
+    'enabled' => false,
+
+    /*
+	|--------------------------------------------------------------------------
+	| Modules Default State: Initialized
+	|--------------------------------------------------------------------------
+	|
+	| When a previously unknown module is added, if it doesn't have a 'initialized' state
+    | set then this is the value which it will default to. If this is not provided
+    | then the module will default to being 'non-initialized'.
+	|
+	*/
+
+    'enabled' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Modules Base Namespace
+    |--------------------------------------------------------------------------
+    |
+    | Define the base namespace for your modules. Be sure to update this value
+    | if you move your modules directory to a new path. This is primarily used
+    | by the module:make Artisan command.
+    |
+    */
 
 	'namespace' => 'App\Modules\\',
 
