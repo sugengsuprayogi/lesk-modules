@@ -10,16 +10,6 @@ use Illuminate\Support\ServiceProvider;
 class {{namespace}}ServiceProvider extends ServiceProvider
 {
 	/**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-	public function boot()
-	{
-		// $this->addMiddleware('');
-	}
-
-	/**
 	 * Register the {{name}} module service provider.
 	 *
 	 * @return void
@@ -54,6 +44,8 @@ class {{namespace}}ServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+		// $this->addMiddleware('');
+
         $this->publishes([
             __DIR__.'/../config/config.php' => config_path('{{slug}}.php'),
         ], 'config');
