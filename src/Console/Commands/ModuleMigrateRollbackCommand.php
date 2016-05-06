@@ -50,7 +50,9 @@ class ModuleMigrateRollbackCommand extends Command
 	 */
 	public function fire()
 	{
-        	if (! $this->confirmToProceed()) return null;
+        // SR [2016-05-06] Don't need the confirmation and
+        // it does not work when called from controller with Artisan::call().
+//        	if (! $this->confirmToProceed()) return null;
 
 		$slug = $this->argument('slug');
 

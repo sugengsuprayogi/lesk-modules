@@ -15,6 +15,9 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
 
         DB::transaction(function () {
 
+            // Call the migration command.
+//            Artisan::call('module:migrate', ['slug' => '{{slug}}', '--force' => true]);
+
             //Register module routes.
             $routeMethodName = Route::firstOrCreate([
                 'name' => '{{slug}}.method-name',
@@ -91,6 +94,9 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
     {
 
         DB::transaction(function () {
+
+            // Call the migration rollback command.
+//            Artisan::call('module:migrate:rollback', ['slug' => '{{slug}}', '--force' => true]);
 
             // Locate module sub menu entries and delete them.
             $menu{{namespace}}MethodName = Menu::where('name', '{{slug}}-method-name')->first();
