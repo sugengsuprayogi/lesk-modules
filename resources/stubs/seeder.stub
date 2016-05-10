@@ -16,6 +16,9 @@ class {{namespace}}DatabaseSeeder extends Seeder
 		Model::unguard();
 
 		// $this->call('{{path}}\{{namespace}}\Database\Seeds\FoobarTableSeeder');
+
+        Model::reguard();
+
 	}
 
 }
