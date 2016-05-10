@@ -17,6 +17,7 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
 
             // Call the migration command.
 //            Artisan::call('module:migrate', ['slug' => '{{slug}}', '--force' => true]);
+//            Artisan::call('module:seed',    ['slug' => '{{slug}}', '--force' => true]);
 
             //Register module routes.
             $routeMethodName = Route::firstOrCreate([
