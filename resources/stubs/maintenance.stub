@@ -1,169 +1,80 @@
 <?php namespace {{path}}\{{namespace}}\Utils;
 
-use Sroutier\L51ESKModules\Contracts\ModuleMaintenanceInterface;
-use App\Models\Menu;
-use App\Models\Route;
-use App\Models\Permission;
-use App\Models\Role;
 use DB;
+use Sroutier\L51ESKModules\Contracts\ModuleMaintenanceInterface;
+use Sroutier\L51ESKModules\Traits\MaintenanceTrait;
 
-class {{namespace}}Maintenance implements ModuleMaintenanceInterface {
+class {{namespace}}Maintenance implements ModuleMaintenanceInterface
+{
+
+    use MaintenanceTrait;
 
 
     static public function initialize()
     {
-
         DB::transaction(function () {
+            self::migrate('{{slug}}');
+            self::seed('{{slug}}');
 
-            // Call the migration command.
-//            Artisan::call('module:migrate', ['slug' => '{{slug}}', '--force' => true]);
-//            Artisan::call('module:seed',    ['slug' => '{{slug}}', '--force' => true]);
+            $permUse{{namespace}} = self::createPermission(  'use-{{slug}}',
+                'Use {{namespace}}',
+                'Allows a user to use the {{namespace}} module.');
 
-            //Register module routes.
-            $routeMethodName = Route::firstOrCreate([
-                'name' => '{{slug}}.method-name',
-                'method' => 'GET',
-                'path' => '{{slug}}/methodName',
-                'action_name' => 'App\Modules\{{namespace}}\Http\Controllers\{{namespace}}Controller@methodName',
-                'enabled' => 1,
-            ]);
 
-            // Create permissions required by module
-            $permUse{{namespace}}MethodName = Permission::firstOrCreate([
-                'name' => 'use-{{slug}}-method-name',
-                'display_name' => 'Use {{namespace}} Method Name',
-                'description' => 'Allows a user to use the Method Name function from the {{namespace}} module.',
-                'enabled' => true,
-            ]);
-
-            // Associate module permissions to the module routes
-            $routeMethodName->permission()->associate($permUse{{namespace}}MethodName);
-            $routeMethodName->save();
+            $routeHome = self::createRoute( '{{slug}}.home',
+                '{{slug}}',
+                'App\Modules\{{namespace}}\Http\Controllers\{{namespace}}Controller@home',
+                $permUse{{namespace}} );
+            self::createRoute( '{{slug}}.show',
+                '{{slug}}/show/{dn}',
+                'App\Modules\{{namespace}}\Http\Controllers\{{namespace}}Controller@show',
+                $permUse{{namespace}} );
 
             // Create a role for the module
-            $role{{namespace}}MethodName = Role::firstOrCreate([
-                "name" => "{{slug}}-method-name-users",
-                "display_name" => "{{namespace}} Method Name Users",
-                "description" => "Users of the Method Name function from the {{namespace}} module.",
-                "enabled" => true
-            ]);
-            // Assign module permission to new role.
-            $role{{namespace}}MethodName->perms()->sync([$permUse{{namespace}}MethodName->id]);
+            self::createRole( '{{slug}}-users',
+                '{{namespace}} Users',
+                'Users of the {{namespace}} module.',
+                [$permUse{{namespace}}->id] );
 
-            // Get handle on home menu as the parent.
-            $parentMenu = Menu::where('name', 'home')->first();
-            // If home menu was not found, the site admin, must have customized the menu system.
-            // Best to create our menu under root and let the admin work it out.
-            if (!$parentMenu) {
-                $parentMenu = Menu::where('name', 'root')->first();
-            }
-
-            // Create modules menu container/folder.
-            $menu{{namespace}}Container = Menu::firstOrCreate([
-                'name'          => '{{slug}}-container',
-                'label'         => '{{namespace}}',
-                'position'      => 10,
-                'icon'          => 'fa fa-folder',
-                'separator'     => false,
-                'url'           => null,                // No url.
-                'enabled'       => true,
-                'parent_id'     => $parentMenu->id,     // Parent is home or root.
-                'route_id'      => null,                // No route
-                'permission_id' => null,                // Get permission from sub-items. If the user has permission to see/use
-                                                        // any sub-items, the menu will be rendered, otherwise it will
-                                                        // not.
-            ]);
-            // Create methodName sub-menu one
-            $menu{{namespace}}MethodName = Menu::firstOrCreate([
-                'name'          => '{{slug}}-method-name',
-                'label'         => 'Method Name',
-                'position'      => 0,
-                'icon'          => 'fa fa-file',
-                'separator'     => false,
-                'url'           => null,                   // Get URL from route.
-                'enabled'       => false,
-                'parent_id'     => $menu{{namespace}}Container->id,
-                'route_id'      => $routeMethodName->id,
-                'permission_id' => null,                   // Get permission from route.
-            ]);
-
+            // Create menu system for the module
+            $menuToolsContainer = self::createMenu( 'tools-container', 'Tools', 10, 'fa fa-folder', 'home', true );
+            self::createMenu( '{{slug}}.home', 'AD Inspector', 0, 'fa fa-file', $menuToolsContainer, false, $routeHome );
         }); // End of DB::transaction(....)
-
     }
+
 
     static public function unInitialize()
     {
-
         DB::transaction(function () {
 
-            // Call the migration rollback command.
-//            Artisan::call('module:migrate:rollback', ['slug' => '{{slug}}', '--force' => true]);
+            self::destroyMenu('{{slug}}.home');
+            self::destroyMenu('tools-container');
 
-            // Locate module sub menu entries and delete them.
-            $menu{{namespace}}MethodName = Menu::where('name', '{{slug}}-method-name')->first();
-            Menu::destroy($menu{{namespace}}MethodName->id);
-            // Locate demo module parent folder and delete it if if does not contain
-            // any other sub-menu entries.
-            $menu{{namespace}}Container = Menu::where('name', '{{slug}}-container')->first();
-            if ( ($menu{{namespace}}Container) && (!$menu{{namespace}}Container->children->count()) ) {
-                Menu::destroy($menu{{namespace}}Container->id);
-            }
+            self::destroyRole('{{slug}}-users');
 
-            // Locate module role, detach from perms and users then delete.
-            $role{{namespace}}MethodName = Role::where('name', '{{slug}}-method-name-users')->first();
-            if ($role{{namespace}}MethodName) {
-                $role{{namespace}}MethodName->perms()->detach();
-                $role{{namespace}}MethodName->users()->detach();
-                Role::destroy($role{{namespace}}MethodName->id);
-            }
+            self::destroyRoute('{{slug}}.show');
+            self::destroyRoute('{{slug}}.home');
 
-            // Locate module routes, dissociate from perms and delete
-            $routeMethodName = Route::where('name', '{{slug}}.method-name')->first();
-            if ($routeMethodName) {
-                $routeMethodName->permission()->dissociate();
-                Route::destroy($routeMethodName->id);
-            }
+            self::destroyPermission('use-{{slug}}');
 
-            // Locate module permission and delete
-            $permUse{{namespace}}MethodName = Permission::where('name', 'use-{{slug}}-method-name')->first();
-            if ($permUse{{namespace}}MethodName) {
-                Permission::destroy($permUse{{namespace}}MethodName->id);
-            }
-
+            self::rollbackMigration('{{slug}}');
         }); // End of DB::transaction(....)
-
     }
+
 
     static public function enable()
     {
-
         DB::transaction(function () {
-
-            // Locate module sub menu entries and enable them.
-            $menu{{namespace}}MethodName = Menu::where('name', '{{slug}}-method-name')->first();
-            if ($menu{{namespace}}MethodName) {
-                $menu{{namespace}}MethodName->enabled = true;
-                $menu{{namespace}}MethodName->save();
-            }
-
-        }); // End of DB::transaction(....)
-
+            self::enableMenu('{{slug}}.home');
+        });
     }
+
 
     static public function disable()
     {
-
         DB::transaction(function () {
-
-            // Locate module sub menu entries and disable them.
-            $menu{{namespace}}MethodName = Menu::where('name', '{{slug}}-method-name')->first();
-            if ($menu{{namespace}}MethodName) {
-                $menu{{namespace}}MethodName->enabled = false;
-                $menu{{namespace}}MethodName->save();
-            }
-
-        }); // End of DB::transaction(....)
-
+            self::disableMenu('{{slug}}.home');
+        });
     }
 
 }

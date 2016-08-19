@@ -49,7 +49,7 @@ class Modules implements RepositoryInterface
 	 *
 	 * @param  string $properties
 	 * @return string
-	 * @throws \Sroutier\L51ESKModules\Exception\FileMissingException
+	 * @throws \Sroutier\L51ESKModules\Exceptions\FileMissingException
 	 */
 	protected function registerServiceProvider($properties)
 	{

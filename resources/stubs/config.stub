@@ -10,7 +10,7 @@ return [
     |
     */
 
-    'config-setting' => 'config-value',
+    'config_setting' => env('{{slug}}.CONFIG_SETTING', 'default_value'),
 
 ];
 
