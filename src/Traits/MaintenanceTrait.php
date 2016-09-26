@@ -215,7 +215,7 @@ trait MaintenanceTrait
     {
         $parent_id = self::getParentMenuID($parent);
         $route_id = self::getRouteID($route);
-        $permission_id = self::getPermissionID($route);
+        $permission_id = self::getPermissionID($permission);
 
         $menu = Menu::firstOrCreate([
             'name'          => $name,
