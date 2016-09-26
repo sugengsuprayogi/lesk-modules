@@ -38,7 +38,7 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
 
             // Create menu system for the module
             $menuToolsContainer = self::createMenu( 'tools-container', 'Tools', 10, 'fa fa-folder', 'home', true );
-            self::createMenu( '{{slug}}.home', 'AD Inspector', 0, 'fa fa-file', $menuToolsContainer, false, $routeHome );
+            self::createMenu( '{{slug}}.home', '{{name}}', 0, 'fa fa-file', $menuToolsContainer, false, $routeHome );
         }); // End of DB::transaction(....)
     }
 
