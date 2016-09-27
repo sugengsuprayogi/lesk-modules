@@ -1,5 +1,5 @@
 <?php
-namespace Sroutier\L51ESKModules\Providers;
+namespace Sroutier\LESKModules\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -27,9 +27,9 @@ class RepositoryServiceProvider extends ServiceProvider
 		if ($driver == 'Custom') {
 			$namespace = config('modules.custom_driver');
 		} else {
-			$namespace = 'Sroutier\L51ESKModules\Repositories\\'.$driver.'Repository';
+			$namespace = 'Sroutier\LESKModules\Repositories\\'.$driver.'Repository';
 		}
 
-		$this->app->bind('Sroutier\L51ESKModules\Contracts\RepositoryInterface', $namespace);
+		$this->app->bind('Sroutier\LESKModules\Contracts\RepositoryInterface', $namespace);
 	}
 }

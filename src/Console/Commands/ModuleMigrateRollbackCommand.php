@@ -1,8 +1,8 @@
 <?php
-namespace Sroutier\L51ESKModules\Console\Commands;
+namespace Sroutier\LESKModules\Console\Commands;
 
-use Sroutier\L51ESKModules\Modules;
-use Sroutier\L51ESKModules\Traits\MigrationTrait;
+use Sroutier\LESKModules\Modules;
+use Sroutier\LESKModules\Traits\MigrationTrait;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;

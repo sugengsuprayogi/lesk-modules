@@ -1,7 +1,7 @@
 <?php
-namespace Sroutier\L51ESKModules\Console\Generators;
+namespace Sroutier\LESKModules\Console\Generators;
 
-use Sroutier\L51ESKModules\Modules;
+use Sroutier\LESKModules\Modules;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;

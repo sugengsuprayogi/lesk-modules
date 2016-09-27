@@ -1,7 +1,7 @@
 <?php
-namespace Sroutier\L51ESKModules\Repositories;
+namespace Sroutier\LESKModules\Repositories;
 
-use Sroutier\L51ESKModules\Contracts\RepositoryInterface;
+use Sroutier\LESKModules\Contracts\RepositoryInterface;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 

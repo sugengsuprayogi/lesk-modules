@@ -1,7 +1,7 @@
 <?php
 
 use Mockery as m;
-use Sroutier\L51ESKModules\Modules;
+use Sroutier\LESKModules\Modules;
 use Illuminate\Database\Eloquent\Collection;
 
 class ModulesTest extends PHPUnit_Framework_TestCase
@@ -31,7 +31,7 @@ class ModulesTest extends PHPUnit_Framework_TestCase
 		parent::setUp();
 
 		$this->app        = m::mock('Illuminate\Foundation\Application');
-		$this->repository = m::mock('Sroutier\L51ESKModules\Contracts\RepositoryInterface');
+		$this->repository = m::mock('Sroutier\LESKModules\Contracts\RepositoryInterface');
 		$this->module     = new Modules($this->app, $this->repository);
 	}
 
@@ -42,6 +42,6 @@ class ModulesTest extends PHPUnit_Framework_TestCase
 
 	public function testHasCorrectInstance()
 	{
-		$this->assertInstanceOf('Sroutier\L51ESKModules\Modules', $this->module);
+		$this->assertInstanceOf('Sroutier\LESKModules\Modules', $this->module);
 	}
 }

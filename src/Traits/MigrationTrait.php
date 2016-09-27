@@ -1,5 +1,5 @@
 <?php
-namespace Sroutier\L51ESKModules\Traits;
+namespace Sroutier\LESKModules\Traits;
 
 trait MigrationTrait
 {

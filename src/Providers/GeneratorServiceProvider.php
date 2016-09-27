@@ -1,5 +1,5 @@
 <?php
-namespace Sroutier\L51ESKModules\Providers;
+namespace Sroutier\LESKModules\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -36,7 +36,7 @@ class GeneratorServiceProvider extends ServiceProvider
     private function registerMakeControllerCommand()
     {
         $this->app->singleton('command.make.module.controller', function($app) {
-            return $app['Sroutier\L51ESKModules\Console\Generators\MakeControllerCommand'];
+            return $app['Sroutier\LESKModules\Console\Generators\MakeControllerCommand'];
         });
 
         $this->commands('command.make.module.controller');
@@ -50,7 +50,7 @@ class GeneratorServiceProvider extends ServiceProvider
     private function registerMakeMigrationCommand()
     {
         $this->app->singleton('command.make.module.migration', function($app) {
-            return $app['Sroutier\L51ESKModules\Console\Generators\MakeMigrationCommand'];
+            return $app['Sroutier\LESKModules\Console\Generators\MakeMigrationCommand'];
         });
 
         $this->commands('command.make.module.migration');
@@ -64,7 +64,7 @@ class GeneratorServiceProvider extends ServiceProvider
     private function registerMakeModuleCommand()
     {
         $this->app->singleton('command.make.module', function($app) {
-            return $app['Sroutier\L51ESKModules\Console\Generators\MakeModuleCommand'];
+            return $app['Sroutier\LESKModules\Console\Generators\MakeModuleCommand'];
         });
 
         $this->commands('command.make.module');
@@ -78,7 +78,7 @@ class GeneratorServiceProvider extends ServiceProvider
     private function registerMakeRequestCommand()
     {
         $this->app->singleton('command.make.module.request', function($app) {
-            return $app['Sroutier\L51ESKModules\Console\Generators\MakeRequestCommand'];
+            return $app['Sroutier\LESKModules\Console\Generators\MakeRequestCommand'];
         });
 
         $this->commands('command.make.module.request');

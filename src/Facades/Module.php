@@ -1,5 +1,5 @@
 <?php
-namespace Sroutier\L51ESKModules\Facades;
+namespace Sroutier\LESKModules\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

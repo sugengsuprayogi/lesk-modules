@@ -1,5 +1,5 @@
 <?php
-namespace Sroutier\L51ESKModules\Contracts;
+namespace Sroutier\LESKModules\Contracts;
 
 interface ModuleMaintenanceInterface
 {

@@ -1,4 +1,4 @@
 <?php
-namespace Sroutier\L51ESKModules\Exceptions;
+namespace Sroutier\LESKModules\Exceptions;
 
 class FileMissingException extends \Exception {}

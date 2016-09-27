@@ -1,5 +1,5 @@
 <?php
-namespace Sroutier\L51ESKModules;
+namespace Sroutier\LESKModules;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -37,18 +37,18 @@ class ModulesServiceProvider extends ServiceProvider
 			__DIR__.'/../config/modules.php', 'modules'
 		);
 
-		$this->app->register('Sroutier\L51ESKModules\Providers\RepositoryServiceProvider');
+		$this->app->register('Sroutier\LESKModules\Providers\RepositoryServiceProvider');
 
-		$this->app->register('Sroutier\L51ESKModules\Providers\MigrationServiceProvider');
+		$this->app->register('Sroutier\LESKModules\Providers\MigrationServiceProvider');
 
-		$this->app->register('Sroutier\L51ESKModules\Providers\ConsoleServiceProvider');
+		$this->app->register('Sroutier\LESKModules\Providers\ConsoleServiceProvider');
 
-		$this->app->register('Sroutier\L51ESKModules\Providers\GeneratorServiceProvider');
+		$this->app->register('Sroutier\LESKModules\Providers\GeneratorServiceProvider');
 
 		$this->app->singleton('modules', function ($app) {
-			$repository = $app->make('Sroutier\L51ESKModules\Contracts\RepositoryInterface');
+			$repository = $app->make('Sroutier\LESKModules\Contracts\RepositoryInterface');
 
-			return new \Sroutier\L51ESKModules\Modules($app, $repository);
+			return new \Sroutier\LESKModules\Modules($app, $repository);
 		});
 	}
 

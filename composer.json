@@ -1,7 +1,7 @@
 {
-    "name": "sroutier/l51esk-modules",
-    "description": "Module package for Laravel 5.1 enterprise starter kit",
-    "keywords": ["modules", "laravel", "l51esk"],
+    "name": "sroutier/lesk-modules",
+    "description": "Module package for Laravel enterprise starter kit",
+    "keywords": ["modules", "laravel", "lesk"],
     "license": "GPL-3.0",
     "authors": [
         {
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-          "Sroutier\\L51ESKModules\\": "src/"
+          "Sroutier\\LESKModules\\": "src/"
         }
     },
     "extra": {

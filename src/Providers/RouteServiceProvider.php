@@ -1,5 +1,5 @@
 <?php
-namespace Sroutier\L51ESKModules\Providers;
+namespace Sroutier\LESKModules\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 

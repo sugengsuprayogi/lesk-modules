@@ -1,21 +1,21 @@
 <?php
 
-namespace Sroutier\L51ESKModules\Middleware;
+namespace Sroutier\LESKModules\Middleware;
 
-use Sroutier\L51ESKModules\Modules;
+use Sroutier\LESKModules\Modules;
 use Closure;
 
 class IdentifyModule
 {
     /**
-     * @var Sroutier\L51ESKModules
+     * @var Sroutier\LESKModules
      */
     protected $module;
 
     /**
      * Create a new IdentifyModule instance.
      *
-     * @param Sroutier\L51ESKModules $module
+     * @param Sroutier\LESKModules $module
      */
     public function __construct(Modules $module)
     {

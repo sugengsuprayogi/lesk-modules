@@ -1,6 +1,6 @@
 # {{namespace}} module
 
-To deploy simply clone the repository from the ```Modules``` directory of the base [L51ESK](https://github.com/sroutier/laravel-5.1-enterprise-starter-kit) install, as shown below:
+To deploy simply clone the repository from the ```Modules``` directory of the base [LESK](https://github.com/sroutier/laravel-enterprise-starter-kit) install, as shown below:
 ```
 $ cd app/Modules/
 $ git clone https://<git-repo-server>/<group>/<repository>.git {{namespace}}

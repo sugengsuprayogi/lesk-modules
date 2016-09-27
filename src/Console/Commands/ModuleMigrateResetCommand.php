@@ -1,7 +1,7 @@
 <?php
-namespace Sroutier\L51ESKModules\Console\Commands;
+namespace Sroutier\LESKModules\Console\Commands;
 
-use Sroutier\L51ESKModules\Modules;
+use Sroutier\LESKModules\Modules;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Database\Migrations\Migrator;

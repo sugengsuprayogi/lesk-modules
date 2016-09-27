@@ -1,7 +1,7 @@
 <?php
-namespace Sroutier\L51ESKModules;
+namespace Sroutier\LESKModules;
 
-use Sroutier\L51ESKModules\Contracts\RepositoryInterface;
+use Sroutier\LESKModules\Contracts\RepositoryInterface;
 use Illuminate\Foundation\Application;
 
 class Modules implements RepositoryInterface
@@ -49,7 +49,7 @@ class Modules implements RepositoryInterface
 	 *
 	 * @param  string $properties
 	 * @return string
-	 * @throws \Sroutier\L51ESKModules\Exceptions\FileMissingException
+	 * @throws \Sroutier\LESKModules\Exceptions\FileMissingException
 	 */
 	protected function registerServiceProvider($properties)
 	{

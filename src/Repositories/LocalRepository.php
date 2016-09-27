@@ -1,7 +1,7 @@
 <?php
-namespace Sroutier\L51ESKModules\Repositories;
+namespace Sroutier\LESKModules\Repositories;
 
-use Sroutier\L51ESKModules\Repositories\Repository;
+use Sroutier\LESKModules\Repositories\Repository;
 
 class LocalRepository extends Repository
 {

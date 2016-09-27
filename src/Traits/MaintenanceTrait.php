@@ -1,4 +1,4 @@
-<?php namespace Sroutier\L51ESKModules\Traits;
+<?php namespace Sroutier\LESKModules\Traits;
 
 use App\Models\Menu;
 use App\Models\Permission;
