@@ -1,6 +1,9 @@
 <?php namespace {{path}}\{{namespace}}\Utils;
 
+use App\Models\Setting;
 use DB;
+use Illuminate\Database\Schema\Blueprint;
+use Schema;
 use Sroutier\LESKModules\Contracts\ModuleMaintenanceInterface;
 use Sroutier\LESKModules\Traits\MaintenanceTrait;
 
@@ -13,14 +16,24 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
     static public function initialize()
     {
         DB::transaction(function () {
-            self::migrate('{{slug}}');
-            self::seed('{{slug}}');
 
+            /////////////////////////////////////////////////
+            // Build database or run migration.
+//            self::buildDB();
+//            self::migrate('{{slug}}');
+
+            /////////////////////////////////////////////////
+            // Seed the database.
+//            self::seed('{{slug}}');
+
+
+            //////////////////////////////////////////
+            // Create permissions.
             $permUse{{namespace}} = self::createPermission(  'use-{{slug}}',
                 'Use {{namespace}}',
                 'Allows a user to use the {{namespace}} module.');
-
-
+            ///////////////////////////////////////
+            // Register routes.
             $routeHome = self::createRoute( '{{slug}}.home',
                 '{{slug}}',
                 'App\Modules\{{namespace}}\Http\Controllers\{{namespace}}Controller@home',
@@ -30,12 +43,14 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
                 'App\Modules\{{namespace}}\Http\Controllers\{{namespace}}Controller@show',
                 $permUse{{namespace}} );
 
-            // Create a role for the module
+            ////////////////////////////////////
+            // Create roles.
             self::createRole( '{{slug}}-users',
                 '{{namespace}} Users',
                 'Users of the {{namespace}} module.',
                 [$permUse{{namespace}}->id] );
 
+            ////////////////////////////////////
             // Create menu system for the module
             $menuToolsContainer = self::createMenu( 'tools-container', 'Tools', 10, 'fa fa-folder', 'home', true );
             self::createMenu( '{{slug}}.home', '{{name}}', 0, 'fa fa-file', $menuToolsContainer, false, $routeHome );
@@ -57,7 +72,11 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
 
             self::destroyPermission('use-{{slug}}');
 
+            /////////////////////////////////////////////////
+            // Destroy database or rollback migration.
             self::rollbackMigration('{{slug}}');
+            self::destroyDB();
+
         }); // End of DB::transaction(....)
     }
 
@@ -75,6 +94,18 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
         DB::transaction(function () {
             self::disableMenu('{{slug}}.home');
         });
+    }
+
+
+    static public function buildDB()
+    {
+        // Add code to build database and tables as needed.
+    }
+
+
+    static public function destroyDB()
+    {
+        // Add code to destroy database and tables as needed.
     }
 
 }
