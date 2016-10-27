@@ -9,15 +9,14 @@ use Auth;
 
 class {{namespace}}Controller extends Controller
 {
-    public function methodName()
+    public function index()
     {
-        $var = 'SomeVar';
-        Audit::log(Auth::user()->id, trans('{{slug}}::general.audit-log.category'), trans('{{slug}}::general.audit-log.msg-method-name', ['var' => $var]));
+        Audit::log(Auth::user()->id, trans('{{slug}}::general.audit-log.category'), trans('{{slug}}::general.audit-log.msg-index'));
 
-        $page_title = trans('{{slug}}::general.page.method-name.title');
-        $page_description = trans('{{slug}}::general.page.method-name.description');
+        $page_title = trans('{{slug}}::general.page.index.title');
+        $page_description = trans('{{slug}}::general.page.index.description');
 
-        return view('{{slug}}::method_name', compact('page_title', 'page_description'));
+        return view('{{slug}}::index', compact('page_title', 'page_description'));
     }
 
 }

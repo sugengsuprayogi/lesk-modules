@@ -10,7 +10,7 @@ return [
     |
     */
 
-    'config_setting' => env('MODULES.{{slug}}.CONFIG_SETTING', 'default_value'),
+    'config_setting' => env('modules.{{slug}}.config_setting', 'default_value'),
 
 ];
 

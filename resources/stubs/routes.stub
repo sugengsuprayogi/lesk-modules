@@ -11,12 +11,6 @@
 |
 */
 
-Route::group(['prefix' => '{{slug}}'], function() {
-	Route::get('/', function() {
-		dd('This is the {{name}} module index page.');
-	});
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -39,7 +33,7 @@ Route::group(['middleware' => 'authorize'], function () {
 
     // {{namespace}} routes
     Route::group(['prefix' => '{{slug}}'], function () {
-        Route::get('methodName',        ['as' => '{{slug}}.method_name',         'uses' => '{{namespace}}Controller@methodName']);
+        Route::get('/',        ['as' => '{{slug}}.index',         'uses' => '{{namespace}}Controller@index']);
     }); // End of {{namespace}} group
 
 

@@ -30,17 +30,13 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
             //////////////////////////////////////////
             // Create permissions.
             $permUse{{namespace}} = self::createPermission(  'use-{{slug}}',
-                'Use {{namespace}}',
+                'Use the {{namespace}} module',
                 'Allows a user to use the {{namespace}} module.');
             ///////////////////////////////////////
             // Register routes.
-            $routeHome = self::createRoute( '{{slug}}.home',
+            $routeHome = self::createRoute( '{{slug}}.index',
                 '{{slug}}',
-                'App\Modules\{{namespace}}\Http\Controllers\{{namespace}}Controller@home',
-                $permUse{{namespace}} );
-            self::createRoute( '{{slug}}.show',
-                '{{slug}}/show/{dn}',
-                'App\Modules\{{namespace}}\Http\Controllers\{{namespace}}Controller@show',
+                'App\Modules\{{namespace}}\Http\Controllers\{{namespace}}Controller@index',
                 $permUse{{namespace}} );
 
             ////////////////////////////////////
@@ -53,7 +49,7 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
             ////////////////////////////////////
             // Create menu system for the module
             $menuToolsContainer = self::createMenu( 'tools-container', 'Tools', 10, 'fa fa-folder', 'home', true );
-            self::createMenu( '{{slug}}.home', '{{name}}', 0, 'fa fa-file', $menuToolsContainer, false, $routeHome );
+            self::createMenu( '{{slug}}.index', '{{name}}', 0, 'fa fa-file', $menuToolsContainer, false, $routeHome );
         }); // End of DB::transaction(....)
     }
 
@@ -62,20 +58,19 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
     {
         DB::transaction(function () {
 
-            self::destroyMenu('{{slug}}.home');
+            self::destroyMenu('{{slug}}.index');
             self::destroyMenu('tools-container');
 
             self::destroyRole('{{slug}}-users');
 
-            self::destroyRoute('{{slug}}.show');
-            self::destroyRoute('{{slug}}.home');
+            self::destroyRoute('{{slug}}.index');
 
             self::destroyPermission('use-{{slug}}');
 
             /////////////////////////////////////////////////
             // Destroy database or rollback migration.
-            self::rollbackMigration('{{slug}}');
-            self::destroyDB();
+//            self::rollbackMigration('{{slug}}');
+//            self::destroyDB();
 
         }); // End of DB::transaction(....)
     }
@@ -84,7 +79,7 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
     static public function enable()
     {
         DB::transaction(function () {
-            self::enableMenu('{{slug}}.home');
+            self::enableMenu('{{slug}}.index');
         });
     }
 
@@ -92,7 +87,7 @@ class {{namespace}}Maintenance implements ModuleMaintenanceInterface
     static public function disable()
     {
         DB::transaction(function () {
-            self::disableMenu('{{slug}}.home');
+            self::disableMenu('{{slug}}.index');
         });
     }
 

@@ -4,14 +4,15 @@ return [
 
     'audit-log'           => [
         'category'              => '{{namespace}}',
-        'msg-method-name'       => 'Accessed method-name {{namespace}}: :var.',
+        'msg-index'             => 'Accessed index {{namespace}}.',
     ],
 
     'page'              => [
-        'method-name'              => [
-            'title'                     => '{{namespace}} | Method Name',
-            'description'               => 'List {{namespace}} information.',
+        'index'              => [
+            'title'                     => '{{namespace}} | index',
+            'description'               => 'Landing page of the {{namespace}} module.',
             'box-title'                 => 'Title of the box.',
+            'welcome'                   => 'Welcome to the {{namespace}} module.',
             ],
         ],
 
