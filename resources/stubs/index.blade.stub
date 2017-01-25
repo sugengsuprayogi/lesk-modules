@@ -19,7 +19,7 @@
                 <div class="box-body">
 
                     <div class="form-group">
-                        {{ trans('reservation::general.page.index.welcome') }}
+                        {{ trans('{{slug}}::general.page.index.welcome') }}
                     </div><!-- /.form-group -->
 
                 </div><!-- /.box-body -->
