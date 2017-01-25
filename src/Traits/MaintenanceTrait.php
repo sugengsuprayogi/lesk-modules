@@ -5,6 +5,7 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Models\Route;
 use Artisan;
+use File;
 
 trait MaintenanceTrait
 {
@@ -84,6 +85,22 @@ trait MaintenanceTrait
     protected static function seed($slug)
     {
         Artisan::call('module:seed',    ['slug' => $slug, '--force' => true]);
+    }
+
+
+    /**
+     * Call the publish
+     *
+     * @param $slug
+     */
+    protected static function publishAsset($nameSpace, $slug)
+    {
+        // Can't use the artisan publish command since the module is uninitialiazed & disabled the
+        // Provider will not be registered and booted.
+        // So we have to build our own deploy function.
+        $assetsSource = config('modules.path') . '/' . $nameSpace . '/assets';
+        $assetsTarget = config('modules.path_public_assets') . '/' . $slug;
+        File::copyDirectory($assetsSource, $assetsTarget);
     }
 
 
