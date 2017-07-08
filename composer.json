@@ -1,5 +1,5 @@
 {
-    "name": "sroutier/lesk-modules",
+    "name": "leskhq/lesk-modules",
     "description": "Module package for Laravel enterprise starter kit",
     "keywords": ["modules", "laravel", "lesk"],
     "license": "GPL-3.0",
